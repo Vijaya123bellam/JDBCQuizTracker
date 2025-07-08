@@ -1,0 +1,17 @@
+CREATE DATABASE IF NOT EXISTS quiz_db;
+USE quiz_db;
+
+CREATE TABLE IF NOT EXISTS students (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS results (
+    result_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    subject VARCHAR(50),
+    score INT,
+    quiz_date DATE,
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
+);
